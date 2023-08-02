@@ -1,53 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
 class App extends Component {
-    state = {
-      name: 'Santiago',
-      counter: 0
-    };
-  
-
-  handlePClick = () => {
-    this.setState({name: 'Gabriel'})
-  }
-
-  handleAClick = () => {
-    const {counter } = this.state;
-    const nextCounter = counter + 1
-    this.setState({counter: nextCounter})
-  }
+  state = {
+    posts: [
+      {
+        id: 1,
+        title: 'o titulo 1',
+        body: 'o corpo 1'
+      },
+      {
+        id: 2,
+        title: 'o titulo 2',
+        body: 'o corpo 2'
+      },
+      {
+        id: 3,
+        title: 'o titulo 3',
+        body: 'o corpo 3'
+      }
+    ]
+  };
 
   render() {
-    const { name, counter }= this.state;
+    const { posts } = this.state;
+
     return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p onClick={this.handlePClick}>
-          {name} {counter}
-        </p>
-        <p onClick={this.handleAClick}>
-          +
-        </p>
-      </header>
-    </div>
-  );
+      <div className="App">
+        {posts.map(post => (
+          <div key={post.id}>
+            <h1 >{post.title}</h1>
+            <p>{post.body}</p>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Hello World
-//         </p>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
